@@ -1,6 +1,6 @@
 // array holds the keys information
 const keys = [
-  {keyName: "A", keyNumber: 65, keySound: "clap"},
+  {keyName: "A", keyNumber: 65, keySound: "claps"},
   {keyName: "S", keyNumber: 83, keySound: "hihat"},
   {keyName: "F", keyNumber: 70, keySound: "openhat"},
   {keyName: "G", keyNumber: 71, keySound: "boom"},
@@ -11,10 +11,12 @@ const keys = [
 ]
 
 // Grab the div which will contain all the keys
-const keysDiv = document.getElementById('keys');
+const keysDiv = document.getElementById('keys'),
+// Grab the div which will contain all the audios
+      audioDiv = document.getElementById('audio');
 
 // function to create keys HTML
-function createHTML() {
+function createKeysHTML() {
   let keyItems;
   for(key of keys) {
     keyItems += `<div data-key=${key.keyNumber} class="key">
@@ -24,6 +26,16 @@ function createHTML() {
   }
   return keyItems;
 }
+// function to create Audio HTML
+function createAudioHTML() {
+  let audioItems;
+  for(key of keys) {
+    audioItems += `<audio data-key=${key.keyNumber} src="sounds/${key.keySound}.wav"></audio>`;
+  }
+  return audioItems;
+}
 
 // include keys HTML within the keysDiv
-keysDiv.innerHTML =createHTML();
+keysDiv.innerHTML =createKeysHTML();
+// include keys HTML within the keysDiv
+audioDiv.innerHTML =createAudioHTML();
