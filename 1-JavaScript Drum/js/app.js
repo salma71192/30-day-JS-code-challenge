@@ -1,8 +1,6 @@
 // array holds the keys information
 const keys = [
   {keyName: "A", keyNumber: 65, keySound: "claps"},
-  {keyName: "S", keyNumber: 83, keySound: "hihat"},
-  {keyName: "F", keyNumber: 70, keySound: "openhat"},
   {keyName: "G", keyNumber: 71, keySound: "boom"},
   {keyName: "H", keyNumber: 72, keySound: "ride"},
   {keyName: "J", keyNumber: 74, keySound: "snare"},
@@ -39,3 +37,10 @@ function createAudioHTML() {
 keysDiv.innerHTML =createKeysHTML();
 // include keys HTML within the keysDiv
 audioDiv.innerHTML =createAudioHTML();
+
+// function to play sound on keydown
+window.addEventListener('keydown', function(e) {
+  let audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  if(!audio) return;
+  audio.play();
+});
