@@ -40,7 +40,23 @@ audioDiv.innerHTML =createAudioHTML();
 
 // function to play sound on keydown
 window.addEventListener('keydown', function(e) {
-  let audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+  let audio = document.querySelector(`audio[data-key="${e.keyCode}"]`),
+      key = document.querySelector(`.key[data-key="${e.keyCode}"]`),
+      allKeys = document.querySelectorAll('.key');
+  // if no sound for the pressed key return(finish) the function
   if(!audio) return;
+  //set the audio time to 0
+  audio.currentTime = 0;
   audio.play();
+  key.classList.add('playing');
+
+  // function to remove the playing class
+  function removetransition(e) {
+    key.classList.remove('playing');
+  }
+  // after the transition ends remove the playing class
+  allKeys.forEach((key) => {
+    key.addEventListener('transitionend', removetransition);
+  })
+
 });
