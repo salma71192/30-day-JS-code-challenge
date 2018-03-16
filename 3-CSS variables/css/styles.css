@@ -13,6 +13,10 @@ body {
   font-size: 50px;
 }
 
+h1 {
+  color: var(--base);
+}
+
 .controls {
   margin-bottom: 50px;
 }
@@ -23,6 +27,6 @@ input {
 
 img {
   padding: var(--spacing);
-  background: var(--base)
+  background: var(--base);
   filter: blur(var(--blur));
 }
